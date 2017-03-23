@@ -1,7 +1,9 @@
 package com.ibm.rcs.ap.beans;
 
 public class ReqExtension {
-	
+	/*
+	 * This class is to store mapping between core and module artifact
+	 */
 	private String modArtifactRef;
 	private String coreArtifactRef;
 	

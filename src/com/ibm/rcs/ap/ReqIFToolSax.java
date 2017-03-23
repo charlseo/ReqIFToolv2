@@ -27,6 +27,7 @@ public class ReqIFToolSax {
 		filePath = filePathCheck.getAbsolutePath();
 		
 		/*******************************************/
+		// Test class is used to run a testing within eclipse console. 
 //		Test test = new Test();
 //		String filePath = test.getReqIFzFile();	
 //		
@@ -43,7 +44,7 @@ public class ReqIFToolSax {
 		
 		System.out.println("\nReading the reqif file now..... \n\n");
 
-		//
+		// Getting Module artifact reference ID, Core artifact reference ID and links information using XSLT processor
 		reqFacSax.getArtifacts();
 
 		ArrayList<Requirement> requirements = reqFacSax.getReqCollection();
@@ -51,7 +52,7 @@ public class ReqIFToolSax {
 		ArrayList<ReqRelation> reqRelations = reqFacSax.getReqRelations();
 		
 		System.out.println("\n" + requirements.size() + " number of requirements found..... \n\n");
-		
+
 //		for (int i = 0; i < requirements.size(); i++) {
 //
 //			System.out.println("Requirement Mod ref: " + requirements.get(i).getRef());
@@ -73,6 +74,7 @@ public class ReqIFToolSax {
 //		}
 
 		
+		// Converting core artifact linking to module artifact linking
 		LinkConstructor linkConstructor = new LinkConstructor();
 		linkConstructor.addModArtifactRef(reqExtensions, reqRelations);
 
