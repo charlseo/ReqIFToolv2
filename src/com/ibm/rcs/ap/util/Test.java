@@ -3,7 +3,7 @@ package com.ibm.rcs.ap.util;
 public class Test {
 	
 	private String reqIFFile = "/Users/charlieseo/Documents/IBM/PMR/AU/RDNG/Downer/HCMT/Requirements-mod02.reqif";
-	private String reqIFzFile = "/Users/charlieseo/Documents/IBM/PMR/AU/RDNG/Downer/Sydney_Demo/KesModules.reqifz";
+	private String reqIFzFile = "/Users/charlieseo/Documents/IBM/PMR/AU/RDNG/Downer/ReqIFToolv2_test/KesModules.reqifz";
 	
 	public void runTest(){
 

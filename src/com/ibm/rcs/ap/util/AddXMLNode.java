@@ -33,6 +33,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+/*
+ * AddXMLNode inserts module artifact link mapping as XML element into the existing reqif file
+ * @author Charlie Seo
+ * @version 2.0
+ * 
+ */
 public class AddXMLNode {
 	
 	private DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -79,6 +85,10 @@ public class AddXMLNode {
   	    System.out.println("--- NameSpace added");
 	}
 	
+	/*
+	 * @param linkMaps getting link mapping as String
+	 * @deprecated
+	 */
 	public void addLinkMaps(String linkMaps) throws Exception, IOException{
 		
 		this.linkMaps = linkMaps;
@@ -89,7 +99,11 @@ public class AddXMLNode {
 		
 		appendXmlFragment(documentBuilder, specRelationsNode, linkMaps);
 	}
-	
+	/*
+	 * Insert link mapping after converting String to XML node element. 
+	 * @param linkMaps receive link mapping as arrayList 
+	 * @throws TransformerException throws an exception in case malformed node added
+	 */
 	public void addLinkMaps(ArrayList<String> linkMaps) throws IOException, SAXException, TransformerException{
 		for (int i = 0; i < linkMaps.size(); i++) {
 			
@@ -134,6 +148,9 @@ public class AddXMLNode {
 		appendXmlFragment(documentBuilder, specRelationsNode, modDefinition);
 	}
 
+	/*
+	 * @deprecated
+	 */
 	private void appendXmlFragment(
   	      DocumentBuilder docBuilder, Node parent,
   	      String fragment) throws IOException, SAXException, Exception {
@@ -156,6 +173,9 @@ public class AddXMLNode {
   	    transformer.transform(source, result);
   	    //System.out.println("XML updated in " + reqIfFilePath);
   }
+	/*
+	 * @deprecated
+	 */
 	
 	private Document convertStringToDocument(String xmlStr) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  

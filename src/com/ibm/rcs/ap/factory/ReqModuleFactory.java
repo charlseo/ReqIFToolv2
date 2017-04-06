@@ -12,11 +12,15 @@ import com.ibm.rcs.ap.beans.ReqModule;
 import com.ibm.rcs.ap.beans.ReqRelation;
 import com.ibm.rcs.ap.util.AddXMLNode;
 
+/*
+ * Not used but this class is to convert a ReqIF to be more DOORS compatible by adding DOORS ReqIF definition 
+ * and DOORS ReqIF token
+ * @author Charlie Seo
+ * @version 2.0
+ * @since 23/03/2017
+ */
 public class ReqModuleFactory {
-	/*
-	 * Not used but this class is to convert a ReqIF to be more DOORS compatible by adding DOORS ReqIF definition 
-	 * and DOORS ReqIF token
-	 */
+
 	private String moduleTypeRef;
 	private static final String MODULE_TYPE_NS = "http://jazz.net/ns/rm#Module";
 	private Document doc;

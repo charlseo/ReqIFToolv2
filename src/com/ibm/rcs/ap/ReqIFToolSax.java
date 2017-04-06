@@ -4,17 +4,27 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import com.ibm.rcs.ap.beans.ReqExtension;
 import com.ibm.rcs.ap.beans.ReqRelation;
 import com.ibm.rcs.ap.beans.Requirement;
 import com.ibm.rcs.ap.factory.LinkConstructor;
 import com.ibm.rcs.ap.factory.ReqFactorySax;
+import com.ibm.rcs.ap.factory.ReqModuleFactory;
 import com.ibm.rcs.ap.util.AddXMLNode;
 import com.ibm.rcs.ap.util.ConsoleHelper;
 import com.ibm.rcs.ap.util.Test;
 import com.ibm.rcs.ap.util.ZipHandler;
 
+/*
+ * The ReqIFTool v2 implements an application that converts DNG ReqIF with module artifact link 
+ * from core artifact link to support data interchange with DOORS Classic
+ * @author Charlie Seo - IBM Watson IOT CE
+ * @version 2.0
+ * @since 23-03-2017
+ */
 public class ReqIFToolSax {
 
 	public static void main(String[] args) throws IOException, Exception {
@@ -28,9 +38,9 @@ public class ReqIFToolSax {
 		
 		/*******************************************/
 		// Test class is used to run a testing within eclipse console. 
-//		Test test = new Test();
-//		String filePath = test.getReqIFzFile();	
-//		
+		//Test test = new Test();
+		//String filePath = test.getReqIFzFile();	
+		
 		/*******************************************/
 		
 		// Handling uncompression and compression by ZipHandler
@@ -89,6 +99,18 @@ public class ReqIFToolSax {
 		// Create XML link mapping and append into the existing reqif file. 
 		linkBuilder.createXMLMaps();
 		AddXMLNode addXmlNode = linkBuilder.getAddXmlNode();
+		
+		Document doc = ReqIFParser.getInstance().readXML(reqIFFile);
+		// Collect module ref ID 
+		ReqModuleFactory reqModFactory = new ReqModuleFactory(doc, addXmlNode);
+
+		// Adding xmlns:doors namespace for DOORS REQIF-DEFINITION
+		// Remove if no merge will be allowed
+		addXmlNode.addNameSpace();
+
+		// Appending DOORS REQIF-DEFINITION with MODULE LOCK
+		// Remove if no merge will be allowed
+		reqModFactory.updateDOORSReqIFDefinition();
 
 		zipHandler.zipit();
 		String finalZipFile = zipHandler.getOutputFileName();

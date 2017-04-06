@@ -12,6 +12,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import com.ibm.rcs.ap.beans.*;
 
+/*
+ * ReqFactorySax implements an application that parses data and store into objects
+  * @author Charlie Seo - IBM Watson IOT CE
+ * @version 2.0
+ * @since 23-03-2017
+ */
 public class ReqFactorySax {
 
 	private String reqIfFilePath;
@@ -33,12 +39,20 @@ public class ReqFactorySax {
 	private Requirement req = null;
 	private ReqExtension reqExtension = null;
 	private ReqRelation reqRelation = null;
-
+	
+	/*
+	 * Constructor with 
+	 * @param reqIfFilePath ReqIF file path
+	 */
 	public ReqFactorySax(String reqIfFilePath) {
 		this.reqIfFilePath = reqIfFilePath;
 	}
 
-
+	/*
+	 * This method collects artifact data using SAXParser
+	 * @throws ParserConfigurationException
+	 * @throws SAXException 
+	 */
 	public void getArtifacts() throws ParserConfigurationException, SAXException {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();

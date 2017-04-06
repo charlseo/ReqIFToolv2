@@ -16,6 +16,7 @@ public class ConsoleHelper {
 		while (!isZipFile) {
 			System.out.print("-----Please specify the ReqIF file (*.reqifz) path: ");
 			filePath = System.console().readLine();
+			
 			File file = new File(filePath);
 	        fileName = file.getName();
 	        System.out.println(fileName);

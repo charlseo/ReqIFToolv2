@@ -3,7 +3,11 @@ package com.ibm.rcs.ap.factory;
 import java.util.ArrayList;
 import com.ibm.rcs.ap.beans.ReqExtension;
 import com.ibm.rcs.ap.beans.ReqRelation;
-
+/*
+ * The LinkConstructor class completes ReqRelation objects by adding source and target module reference ID
+ * @author Charlie Seo
+ * @version 2.0
+ */
 public class LinkConstructor {
 	
 	private ArrayList<ReqExtension> reqExtensions = new ArrayList<ReqExtension>();

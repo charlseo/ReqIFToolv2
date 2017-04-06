@@ -2,12 +2,21 @@ package com.ibm.rcs.ap.factory;
 
 import java.util.ArrayList;
 import com.ibm.rcs.ap.beans.*;
-
+/*
+ * This class adds core artifact references into Requirement objects
+ * @author Charlie Seo
+ * @version 2.0
+ */
 public class ReqConstructor {
 	
 	private ArrayList<Requirement> requirements = new ArrayList<Requirement>();
 	private ArrayList<ReqExtension> reqExtensions = new ArrayList<ReqExtension>();
 	
+	/*
+	 * 
+	 * @param requirements The arrayList of requirement type 
+	 * @param reqExtension The arrayList of Artifact extension - mapping between core and module artifact
+	 */
 	public void addCoreArtifactRef(ArrayList<Requirement> requirements, ArrayList<ReqExtension> reqExtensions) {
 		this.requirements = requirements;
 		this.reqExtensions = reqExtensions;
